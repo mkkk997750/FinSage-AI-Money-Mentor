@@ -1,0 +1,21 @@
+# Ignore node_modules for frontend
+frontend/node_modules/
+
+# Ignore Python virtual environments
+.venv/
+backend/.venv/
+
+# Ignore environment variable files
+.env
+backend/.env
+
+# Ignore Python cache
+__pycache__/
+backend/__pycache__/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db

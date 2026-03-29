@@ -1,0 +1,220 @@
+/* ── CSS Custom Properties ────────────────────────────────────────────────── */
+:root {
+  --bg:         #0b1229;
+  --bg2:        #0f1a36;
+  --card:       #131e3f;
+  --card2:      #1a2650;
+  --border:     #1e2f5a;
+  --accent:     #4f8ef7;
+  --accent2:    #7c3aed;
+  --green:      #10b981;
+  --yellow:     #f59e0b;
+  --red:        #ef4444;
+  --indigo:     #6366f1;
+  --cyan:       #06b6d4;
+  --pink:       #ec4899;
+  --orange:     #f97316;
+  --text:       #e2e8f0;
+  --text2:      #94a3b8;
+  --text3:      #64748b;
+  --sidebar-w:  240px;
+  --topbar-h:   60px;
+  --radius:     10px;
+  --radius-lg:  14px;
+  --shadow:     0 4px 24px rgba(0,0,0,.4);
+  --transition: 0.2s ease;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); line-height: 1.5; overflow-x: hidden; }
+button { cursor: pointer; font-family: inherit; }
+input, select, textarea { font-family: inherit; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.app { display: flex; flex-direction: column; height: 100vh; }
+.layout { display: flex; flex: 1; overflow: hidden; padding-top: var(--topbar-h); }
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px;
+  background: var(--bg);
+  margin-left: var(--sidebar-w);
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* ── Cards ────────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+.card-sm { padding: 14px 16px; }
+.section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text3);
+  margin-bottom: 12px;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: #3b7fef; transform: translateY(-1px); box-shadow: 0 4px 16px rgba(79,142,247,.35); }
+.btn-secondary { background: var(--card2); color: var(--text); border: 1px solid var(--border); }
+.btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { opacity: .9; }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+/* ── Badges / Pills ───────────────────────────────────────────────────────── */
+.pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+}
+.pill-green  { background: rgba(16,185,129,.15); color: #10b981; }
+.pill-yellow { background: rgba(245,158,11,.15);  color: #f59e0b; }
+.pill-red    { background: rgba(239,68,68,.15);   color: #ef4444; }
+.pill-blue   { background: rgba(79,142,247,.15);  color: #4f8ef7; }
+.pill-indigo { background: rgba(99,102,241,.15);  color: #6366f1; }
+.pill-gray   { background: rgba(148,163,184,.1);  color: #94a3b8; }
+
+/* ── Tables ───────────────────────────────────────────────────────────────── */
+.data-table-wrap { overflow-x: auto; border-radius: var(--radius); }
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+.data-table th {
+  background: var(--card2);
+  color: var(--text2);
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+.data-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid rgba(30,47,90,.6);
+  color: var(--text);
+}
+.data-table tr:hover td { background: rgba(79,142,247,.04); }
+.data-table tr:last-child td { border-bottom: none; }
+
+/* ── Spinner ──────────────────────────────────────────────────────────────── */
+.spinner-wrap { display: flex; align-items: center; justify-content: center; padding: 60px; }
+.spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Empty state ──────────────────────────────────────────────────────────── */
+.empty-state { text-align: center; padding: 60px 20px; color: var(--text3); }
+.empty-state .icon { font-size: 2.5rem; margin-bottom: 12px; }
+
+/* ── Form inputs ──────────────────────────────────────────────────────────── */
+.form-group { margin-bottom: 14px; }
+.form-group label { display: block; font-size: 0.8rem; font-weight: 600; color: var(--text2); margin-bottom: 6px; }
+.form-control {
+  width: 100%;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  padding: 9px 12px;
+  font-size: 0.85rem;
+  transition: border-color var(--transition);
+}
+.form-control:focus { outline: none; border-color: var(--accent); }
+
+/* ── Tabs ─────────────────────────────────────────────────────────────────── */
+.tabs { display: flex; gap: 4px; margin-bottom: 16px; background: var(--card2); padding: 4px; border-radius: 10px; }
+.tab-btn {
+  flex: 1;
+  padding: 7px 12px;
+  border: none;
+  background: transparent;
+  color: var(--text2);
+  border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+.tab-btn.active { background: var(--accent); color: #fff; }
+.tab-btn:hover:not(.active) { color: var(--text); background: var(--border); }
+
+/* ── Progress bar ─────────────────────────────────────────────────────────── */
+.progress-bar-wrap { background: var(--bg2); border-radius: 999px; height: 6px; margin: 4px 0; }
+.progress-bar { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent2)); transition: width .6s ease; }
+
+/* ── Mono code ────────────────────────────────────────────────────────────── */
+.code-block {
+  background: #050d1e;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  overflow-y: auto;
+  max-height: 400px;
+  color: #a5f3fc;
+}
+
+/* ── Markdown output ──────────────────────────────────────────────────────── */
+.md-output { font-size: 0.88rem; line-height: 1.7; color: var(--text); }
+.md-output h1,.md-output h2,.md-output h3 { color: var(--accent); margin: 16px 0 8px; font-weight: 700; }
+.md-output ul,.md-output ol { margin-left: 20px; margin-bottom: 8px; }
+.md-output li { margin-bottom: 3px; }
+.md-output code { background: rgba(79,142,247,.1); padding: 1px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 0.83em; color: var(--cyan); }
+.md-output pre code { background: transparent; padding: 0; }
+.md-output pre { background: #050d1e; padding: 12px; border-radius: 8px; overflow-x: auto; margin: 8px 0; }
+.md-output strong { color: var(--text); font-weight: 700; }
+.md-output p { margin-bottom: 8px; }
+.md-output table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+.md-output th,.md-output td { padding: 7px 12px; border: 1px solid var(--border); }
+.md-output th { background: var(--card2); color: var(--text2); }
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root { --sidebar-w: 0px; }
+  .main-content { margin-left: 0; padding: 16px; }
+}
